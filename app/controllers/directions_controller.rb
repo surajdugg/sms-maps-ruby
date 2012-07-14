@@ -7,7 +7,7 @@ class DirectionsController < ApplicationController
 
     @params = params.to_s
     message = params[:message]
-    from, to = message.split('to').map(&:strip)
+    from, to = message.scan(/.*?from\s(.*)\sto\s(.*)/).first
 
     url << "origin=#{from}"
     url << "&destination=#{to}"
