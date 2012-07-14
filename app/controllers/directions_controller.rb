@@ -5,6 +5,7 @@ class DirectionsController < ApplicationController
     #GOOGLE_MAPS_API_KEY = 'AIzaSyATapwAT6x09jbq8xi1tG3_DrhYultpLb4'    
     url = "http://maps.googleapis.com/maps/api/directions/json?"
 
+    @params = params.to_s
     message = params[:message]
     from, to = message.split('to').map(&:strip)
 
