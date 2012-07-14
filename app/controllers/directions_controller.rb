@@ -29,5 +29,15 @@ class DirectionsController < ApplicationController
     end
 
     @data = { distance: distance, duration: duration, steps: steps }
+
+    respond_to do |format|
+      format.html
+      format.text do
+        steps.map! do |step|
+          "#{step[:distance_to]} - #{step[:name]}"
+        end
+        render :text => "Distance is #{distance} and duration is #{duration}.\n#{steps.join("\n")}"
+      end
+    end
   end
 end
